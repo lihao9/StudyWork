@@ -43,7 +43,7 @@ dependencies {
 
 
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
-
+    api "com.blankj:utilcodex:$utilcode_version"
 
 
 }
