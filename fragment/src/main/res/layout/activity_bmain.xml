@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BMainActivity">
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcv"
+        app:layout_constraintBottom_toTopOf="@+id/rg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+
+    <RadioGroup
+        android:orientation="horizontal"
+        android:id="@+id/rg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RadioButton
+            android:id="@+id/rb_one"
+            android:textColor="@drawable/selector_tv_color"
+            android:text="tab1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/selector_rb_one"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+        <RadioButton
+            android:id="@+id/rb_two"
+            android:textColor="@drawable/selector_tv_color"
+            android:text="tab2"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_rb_two"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+        <RadioButton
+            android:id="@+id/rb_three"
+            android:textColor="@drawable/selector_tv_color"
+            android:text="tab3"
+            android:button="@null"
+            android:drawableTop="@drawable/selector_rb_three"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+
+    </RadioGroup>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
