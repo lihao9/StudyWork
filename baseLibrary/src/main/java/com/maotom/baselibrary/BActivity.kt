@@ -10,7 +10,6 @@ abstract class BActivity<T:ViewBinding>: AppCompatActivity() {
 
     lateinit var binding: T
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingXml()
@@ -19,9 +18,10 @@ abstract class BActivity<T:ViewBinding>: AppCompatActivity() {
     }
 
     abstract fun getViewLayout(): Int
+    abstract fun bindingXml()
     abstract fun initView(savedInstanceState: Bundle?)
 
-    abstract fun bindingXml()
+
 
     fun showLoading(){
 

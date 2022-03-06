@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AS/StudyWork/fragment/src/main/res/drawable/selector_tv_color.xml" value="0.3067708333333333" />
+        <entry key="..\:/AS/StudyWork/fragment/src/main/res/layout/activity_fragment_bottom_navigation_view.xml" value="0.2682291666666667" />
         <entry key="..\:/AS/StudyWork/fragment/src/main/res/layout/activity_main.xml" value="0.21875" />
+        <entry key="..\:/AS/StudyWork/fragment/src/main/res/layout/fragment_tab_one.xml" value="0.27291666666666664" />
+        <entry key="..\:/AS/StudyWork/fragment/src/main/res/layout/fragment_tab_three.xml" value="0.27291666666666664" />
+        <entry key="..\:/AS/StudyWork/fragment/src/main/res/layout/fragment_tab_two.xml" value="0.27291666666666664" />
+        <entry key="..\:/AS/StudyWork/fragment/src/main/res/layout/item_main.xml" value="0.28541666666666665" />
+        <entry key="..\:/AS/StudyWork/fragment/src/main/res/menu/bnv_menu.xml" value="0.2864583333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

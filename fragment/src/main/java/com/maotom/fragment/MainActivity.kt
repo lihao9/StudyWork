@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.maotom.baselibrary.BActivity
 import com.maotom.fragment.activity.BMainActivity
+import com.maotom.fragment.activity.FragmentBottomNavigationViewActivity
 import com.maotom.fragment.adapter_click_interface.AdapterItemChildClickListener
 import com.maotom.fragment.adapter_click_interface.AdapterItemClickListener
 import com.maotom.fragment.databinding.ActivityMainBinding
@@ -57,10 +58,10 @@ class MainActivity : AppCompatActivity() {
     fun doWork(position: Int){
         var intent = Intent()
         when(adapter.data[position]){
-            "Fragment+RadiaButton" ->{
+            "Fragment+RadiaButton" ->
                 intent.setClass(this@MainActivity,BMainActivity::class.java)
-            }
-
+            "Fragment+BottomNavigationView" ->
+                intent.setClass(this@MainActivity,FragmentBottomNavigationViewActivity::class.java)
         }
         startActivity(intent)
 

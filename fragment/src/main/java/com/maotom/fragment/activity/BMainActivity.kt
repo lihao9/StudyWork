@@ -42,6 +42,13 @@ class BMainActivity : BActivity<ActivityBmainBinding>() {
                     currentFragment = tabThreeFragment
             }
 
+//            supportFragmentManager.commit {
+//                fragmentList.forEach {
+//                    hide(it)
+//                }
+//            }
+
+
             changeFragment(currentFragment)
         }
 
@@ -82,18 +89,18 @@ class BMainActivity : BActivity<ActivityBmainBinding>() {
             FRAGMENT_THREE
         }
 
-        if (!fragmentList.contains(fragment)){
-            //fragment未添加
-            fragmentList.add(fragment)
-            supportFragmentManager.commit {
 
-                replace(R.id.fcv,fragment,tag)
-                addToBackStack(tag)
+        supportFragmentManager.commit {
+            if (!fragmentList.contains(fragment)){
+                //fragment未添加
+                fragmentList.add(fragment)
+                add(R.id.fcv,fragment,tag)
             }
-        }else{
-            supportFragmentManager.commit {
-                replace(R.id.fcv,fragment,tag)
+            fragmentList.forEach {
+                hide(it)
             }
+            show(fragment)
+
         }
     }
 }
