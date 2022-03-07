@@ -77,15 +77,22 @@ class FragmentBottomNavigationViewActivity : BActivity<ActivityFragmentBottomNav
             }
         }
 
-        hideAllFragment()
+//        hideAllFragment()
 
         showFragment(fragmentList[0],true,FRAGMENT_ONE)
     }
 
     private fun showFragment(fragment: Fragment, addBackStack: Boolean = false, name: String = "") {
-//        hideAllFragment()
+
 
         supportFragmentManager.commit {
+
+//            hideAllFragment()
+
+            fragmentList.forEach {
+                hide(it)
+            }
+
             setCustomAnimations(
                 R.anim.slide_in,
                 R.anim.fade_out,
@@ -111,14 +118,14 @@ class FragmentBottomNavigationViewActivity : BActivity<ActivityFragmentBottomNav
 
     private fun setClickListener() {
         binding.bnv.setOnItemSelectedListener {
-
+            hideAllFragment()
             when(it.itemId){
                 R.id.tab_one ->
-                    showFragment(fragmentList[0],true,FRAGMENT_ONE)
+                    showFragment(fragmentList[0])
                 R.id.tab_two ->
-                    showFragment(fragmentList[1],true,FRAGMENT_TWO)
+                    showFragment(fragmentList[1])
                 R.id.tab_three ->
-                    showFragment(fragmentList[2],true,FRAGMENT_THREE)
+                    showFragment(fragmentList[2])
             }
             true
         }

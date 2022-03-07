@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.commit
 import com.maotom.fragment.R
+import com.maotom.fragment.databinding.FragmentTabTwoBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -14,12 +16,26 @@ import com.maotom.fragment.R
  */
 class TabTwoFragment : Fragment() {
 
+    lateinit var binding: FragmentTabTwoBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab_two, container, false)
+        binding = FragmentTabTwoBinding.inflate(layoutInflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btn.setOnClickListener {
+            MyDialogFragment().show(parentFragmentManager,"")
+
+//            parentFragmentManager.commit {
+//                add(R.id.fcv,MyDialogFragment::class.java,null)
+//            }
+        }
     }
 
     companion object {

@@ -1,4 +1,4 @@
-package com.maotom.fragment
+package com.maotom.activity
 
 import org.junit.Test
 
@@ -12,9 +12,6 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-
-        if(5<5 == true) print("1")else print("0")
-
         assertEquals(4, 2 + 2)
     }
 }
