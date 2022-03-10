@@ -37,7 +37,6 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>(){
         holder.tv.setOnClickListener {
             adapterItemChildClickListener?.onItemChildClickListener(position)
         }
-
     }
 
     override fun getItemCount(): Int {

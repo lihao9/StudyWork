@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyWork">
+        <activity android:name=".activity.ShowDialogActivity"></activity>
         <activity
             android:name=".activity.FragmentBottomNavigationViewActivity"
             android:exported="false" />
