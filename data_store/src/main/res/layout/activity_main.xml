@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/btn_preferences_dataStore_get"
-        android:text="Preferences DataStore存储"
+        android:text="Preferences DataStore获取"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
