@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.maotom.data_store.datastore";
+option java_multiple_files = true;
+
+message AppConfig {
+  // filter for showing / hiding completed tasks
+  bool show_completed = 1;
+  string content = 2;
+}

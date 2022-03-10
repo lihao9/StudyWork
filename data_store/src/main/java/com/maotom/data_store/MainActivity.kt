@@ -1,29 +1,35 @@
 package com.maotom.data_store
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
-import androidx.datastore.dataStoreFile
+import androidx.datastore.createDataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
+import androidx.datastore.preferences.createDataStore
 import com.maotom.data_store.databinding.ActivityMainBinding
+import com.maotom.data_store.datastore.AppConfig
+import com.maotom.data_store.proto_data.ConfigSerializer
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity(), {
+class MainActivity : AppCompatActivity(),CoroutineScope by MainScope() {
 
     lateinit var binding: ActivityMainBinding
 
-    val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+    val dataStore: DataStore<Preferences>
+        get() = createDataStore(name = "appConfig")
+
+    val protoDataStore: DataStore<AppConfig> = createDataStore(fileName = "appProtoConfig",serializer = ConfigSerializer)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
         setOnClickListener()
-
     }
 
     private fun setOnClickListener() {
@@ -31,35 +37,36 @@ class MainActivity : AppCompatActivity(), {
 
 
         }
-        binding.btnPreferencesDataStoreGet.setOnClickListener {  }
-        binding.btnProtoDataStoreSave.setOnClickListener {  }
-        binding.btnProtoDataStoreGet.setOnClickListener {  }
-    }
-
-    suspend fun saveData(value:Any){
-        when(value.javaClass){
-            Int.javaClass ->{
-                val EXAMPLE_COUNTER = intPreferencesKey("example_counter")
-                dataStore()
-
-
-            }
-            String.javaClass ->
-            Boolean.javaClass ->
-            Float.javaClass ->
-            Char.javaClass ->
-            Byte.javaClass ->
-            Short.javaClass ->
-            Double.javaClass ->
-
-            else{
-
-            }
-
+        binding.btnPreferencesDataStoreGet.setOnClickListener {
 
         }
-
+        binding.btnProtoDataStoreSave.setOnClickListener {
+            launch {
+                saveProtoStore()
+            }
+        }
+        binding.btnProtoDataStoreGet.setOnClickListener {
+            launch {
+                getProtoStore()
+            }
+        }
     }
 
 
+
+    suspend fun saveProtoStore(){
+        protoDataStore.updateData {
+            it.toBuilder().setShowCompleted(false).setContent(binding.etInputContent.text.toString().trim()).build()
+        }
+    }
+
+    suspend fun getProtoStore(){
+        protoDataStore.data.map {
+            it.content
+        }.collect {
+            binding.tvShowProtoDataStore.text = it
+        }
+    }
+
 }
+

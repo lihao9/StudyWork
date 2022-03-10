@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.maotom.baselibrary.BActivity
 import com.maotom.fragment.activity.BMainActivity
 import com.maotom.fragment.activity.FragmentBottomNavigationViewActivity
+import com.maotom.fragment.activity.ShowDialogActivity
 import com.maotom.fragment.adapter_click_interface.AdapterItemChildClickListener
 import com.maotom.fragment.adapter_click_interface.AdapterItemClickListener
 import com.maotom.fragment.databinding.ActivityMainBinding
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val adapter by lazy { MainAdapter() }
 
-    val data = arrayListOf("Fragment+RadiaButton","Fragment+BottomNavigationView","FragmentT")
+    val data = arrayListOf("Fragment+RadiaButton","Fragment+BottomNavigationView","viewBindingDialog")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity() {
                 intent.setClass(this@MainActivity,BMainActivity::class.java)
             "Fragment+BottomNavigationView" ->
                 intent.setClass(this@MainActivity,FragmentBottomNavigationViewActivity::class.java)
+
+            "viewBindingDialog"-> {
+                intent.setClass(this@MainActivity,ShowDialogActivity::class.java)
+            }
         }
         startActivity(intent)
 
