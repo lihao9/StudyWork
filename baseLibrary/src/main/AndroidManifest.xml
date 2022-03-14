@@ -6,6 +6,10 @@
         <activity
             android:name=".BActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".BaseActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

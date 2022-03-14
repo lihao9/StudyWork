@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">view_data_binding</string>
+    <string name="name">name</string>
 </resources>
