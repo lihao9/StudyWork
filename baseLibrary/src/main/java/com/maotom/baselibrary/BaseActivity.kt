@@ -6,8 +6,10 @@ import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.viewbinding.ViewBinding
 import com.blankj.utilcode.util.ToastUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 
-abstract class BaseActivity<T:ViewDataBinding>: AppCompatActivity() {
+abstract class BaseActivity<T:ViewDataBinding>: AppCompatActivity(),CoroutineScope by MainScope() {
 
     lateinit var binding: T
 

@@ -11,8 +11,25 @@
             name="cuser"
             type="com.maotom.view_data_binding.bean.CUser" />
 
-    </data>
+        <variable
+            name="image"
+            type="java.lang.String" />
 
+        <variable
+            name="click"
+            type="com.maotom.view_data_binding.ClickListenerInterface" />
+
+        <variable
+            name="myRunnable"
+            type="java.lang.Runnable" />
+
+        <import type="com.blankj.utilcode.util.ResourceUtils"/>
+
+        <import type="android.net.Uri"/>
+
+
+
+    </data>
 
 
     <LinearLayout
@@ -56,6 +73,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+
+        <Button
+            android:text="方法引用"
+            android:onClick="@{click::methodReferences}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="@{(theView) -> click.listenerBindings(theView,myRunnable)}"
+            android:text="监听器绑定"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+<!--        app:imageResource='@{ResourceUtils.getDrawableIdByName("ic_launcher")}'-->
+        <ImageView
+            android:id="@+id/iv_img"
+            app:imageUrl="@{image}"
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
+        <com.maotom.view_data_binding.MyTextView
+            app:twoText="@{cuser.name}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </layout>
