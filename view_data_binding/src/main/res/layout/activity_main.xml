@@ -94,7 +94,20 @@
             android:layout_height="200dp" />
 
         <com.maotom.view_data_binding.MyTextView
-            app:twoText="@{cuser.name}"
+            app:twoText="@{user.name}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <com.maotom.view_data_binding.MyTextView
+            android:id="@+id/myTv"
+            myTextTitle="@={cuser.name}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:onClick="changeCUserValue"
+            android:text="修改值"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

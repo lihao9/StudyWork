@@ -34,9 +34,7 @@ class MyTextView@JvmOverloads constructor(context:Context,attrs: AttributeSet? =
     }
 
     fun setTempText(str:String){
-        Logger.e(str)
-        ToastUtils.showShort(str)
-
+        setText(str)
     }
 
 
