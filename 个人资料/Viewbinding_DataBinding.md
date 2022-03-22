@@ -202,7 +202,7 @@ fragment、listView、RecyclerView中使用
     }
 
 参数非常重要。第一个参数用于确定与特性相关的视图类型，第二个参数用于确定在给定特性的绑定表达式中接受的类型；可以
-接受多个绑定表达式；当出现绑定表达式冲突时，自定义绑定表达式将会替换库默认的绑定表达式。
+接受多个绑定表达式；可以使用旧值判断；当出现绑定表达式冲突时，自定义绑定表达式将会替换库默认的绑定表达式。
 
 	@BindingAdapter(value = ["imageUrl", "placeholder"], requireAll = false)
     fun setImageUrl(imageView: ImageView, url: String?, placeHolder: Drawable?) {
@@ -215,5 +215,68 @@ fragment、listView、RecyclerView中使用
 
 requireAll = false:当有任意特性被设置时，将会调用绑定器，不用全部特性设置值
 
+
+### 双向绑定 ###
+
+框架支持的常规特性用 @={}实现双向绑定
+
+自定义特性用如下方式
+
+1.属性绑定（将实体属性信息绑定到视图上）
+
+	@BindingAdapter("myTextTitle")
+    @JvmStatic
+    fun setMyTextTitle(myTextView: MyTextView,oldTitle: String?,newTitle: String){
+        if (newTitle != oldTitle){
+            Logger.d("新旧值不同")
+            myTextView.setTempText(newTitle)
+        }else{
+            Logger.d("新旧值相同")
+        }
+    }
+
+
+2.视图值获取
+
+	@InverseBindingAdapter(attribute = "myTextTitle")
+    @JvmStatic
+    fun getMyTextTitle(myTextView: MyTextView):String{
+        return myTextView.text.toString()
+    }
+
+3.视图数据变化发出通知
+
+	@BindingAdapter("myTextTitleAttrChanged")
+    @JvmStatic
+    fun setAttrChangedListener(view: MyTextView,
+                               attrChange: InverseBindingListener){
+        view.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+            override fun afterTextChanged(s: Editable?) {
+                attrChange.onChange()
+            }
+        })
+    }
+
+
+
+
+1. @BindingAdapter：注解一个方法（方法如何将值设置到视图上）---setter
+1. @InverseBindingAdapter：注解方法（用于返回设置在视图上的值）---getter
+2. @BindingConversion:将表达式值的类型转化为特定的值，用于特性的setter方法
+		
+			
+		@BindingConversion
+    	fun convertColorToDrawable(color: Int) = ColorDrawable(color)
+	
+		<View
+       	android:background="@{isError ? @color/red : @color/white}"
+       	android:layout_width="wrap_content"
+       	android:layout_height="wrap_content"/>
 
 
