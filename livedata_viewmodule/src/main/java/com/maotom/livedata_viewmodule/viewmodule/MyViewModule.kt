@@ -46,5 +46,4 @@ class MyViewModule: ViewModel() {
     }
 
 
-
 }
