@@ -15,9 +15,8 @@ import kotlinx.coroutines.launch
  */
 class MyViewModule: ViewModel() {
 
-
-
     val myLiveData by lazy { MutableLiveData<User>() }
+    var myStr = Transformations.map(myLiveData){  }
 
 
     fun doOnCoroutines(block: suspend () -> Unit){
@@ -37,13 +36,8 @@ class MyViewModule: ViewModel() {
     }
 
     fun changeData(){
-        Transformations.map(myLiveData){
-            it.name = "newxl"
-            it.location = "newzhenz"
-            it.age = 30
-        }
-
+        myLiveData.postValue(User().apply {
+            name = ""
+        })
     }
-
-
 }

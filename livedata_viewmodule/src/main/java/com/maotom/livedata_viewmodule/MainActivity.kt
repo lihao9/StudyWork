@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.myViewModel = mViewModel
 
-        mViewModel.myLiveData.observe(this,{
-            Logger.d("接收到LiveData数据::"+it.name)
-        })
+        mViewModel.myLiveData.observe(this) {
+            Logger.d("接收到LiveData数据::" + it.name)
+        }
 
     }
 
