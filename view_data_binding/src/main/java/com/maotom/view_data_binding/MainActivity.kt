@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.MotionEvent
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -26,6 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     val TAG = "MainActivity"
 
     var cUser: CUser? = null
+    var user: User? = null
 
     override fun getViewLayout(): Int {
         return R.layout.activity_main
@@ -62,12 +64,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 //        }
 
         binding.user = User("tom",26)
+        user = User("tom",15)
         cUser = CUser()
+
+        binding.user = user
         binding.cuser = cUser?.apply {
             name = "ctom"
             age = 27
         }
-
 
         launch {
             val async = async {
@@ -80,9 +84,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             async.await()
         }
 
-
-
-
         binding.myRunnable = Runnable {
             runOnUiThread {
                 Log.e(TAG, "runOnUiThread")
@@ -90,15 +91,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
 
-//        binding.image = "https://fileupload.tg3.fun/file/download/31878a89-f20a-4516-af14-d7eba8596a0b.png"
         Glide.with(this@MainActivity)
             .load("https://fileupload.tg3.fun/file/download/31878a89-f20a-4516-af14-d7eba8596a0b.png")
-
             .into(binding.ivImg)
+
 
         binding.click = ClickListenerInterface()
 
         binding.btnShowData.setOnClickListener {
+
+            user?.apply {
+                name = "ntom"
+                age = 115
+            }
 
             cUser?.apply {
                 name = "ctom"
@@ -109,4 +114,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
     }
+
+
+    fun changeCUserValue(view: View){
+
+        binding.myTv.text = "lh"
+        Logger.d(cUser?.name)
+
+//        cUser?.apply {
+//            name = "ctom"
+//            age = 28
+//        }
+    }
+
 }
