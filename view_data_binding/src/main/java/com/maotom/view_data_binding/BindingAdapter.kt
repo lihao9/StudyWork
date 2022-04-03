@@ -29,7 +29,7 @@ object BindingAdapter {
 
     @BindingAdapter(value = ["twoText"],requireAll = false)
     @JvmStatic
-    fun setText(myTextView: MyTextView,oldText:String,newString:String){
+    fun setText(myTextView: MyTextView,oldText:String?,newString:String){
         if (oldText != newString){
             myTextView.setTempText(newString?:"没数据")
             ToastUtils.showShort(newString?:"没数据")

@@ -94,8 +94,13 @@
             android:layout_height="200dp" />
 
         <com.maotom.view_data_binding.MyTextView
+            android:focusable="true"
+            android:clickable="true"
+            android:background="@android:color/holo_red_dark"
+            android:textColor="@drawable/selector_color"
+            android:id="@+id/myTv"
             app:twoText="@{cuser.name}"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
